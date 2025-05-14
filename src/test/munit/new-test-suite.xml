@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+			<munit:config name="demo-test-suite.xml" />
+	<munit:test name="new-test-suiteTest" doc:id="3873b651-0493-412b-9723-11ef4d742bed" >
+		<munit:execution >
+			<flow-ref doc:name="Flow Reference" doc:id="2301177c-d76c-4971-a486-c5e02088ed34" name="demoFlow"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="6eafcba9-c370-4629-9d1a-e65e575805ad" is="#[MunitTools::notNullValue()]" expression="#[payload]"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="new-test-suiteTest1" doc:id="1387e312-1397-4449-b045-12a32009faf5" >
+		<munit:execution >
+			<flow-ref doc:name="Flow Reference" doc:id="dfc4953b-d228-421f-ab78-d7eaa7f774ab" name="demoFlow" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="9d80d04b-9efa-4a7e-a71b-c6e143ced8e6" actual="#['Deliberate Error']" expected="#[payload]"/>
+		</munit:validation>
+	</munit:test>
+	<munit:test name="new-test-suiteTest2" doc:id="0598ce68-7545-46e4-9ef4-7a1e6b7101cf" ignore="true">
+		<munit:execution >
+			<flow-ref doc:name="Flow Reference" doc:id="4ff417ee-130e-4fd0-91bb-437d77f6ccab" name="demoFlow" />
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-equals doc:name="Assert equals" doc:id="fd561c58-6112-45c6-a913-ebdeafd51d37" actual="#['Deliberate Error']" expected="#[payload]" />
+		</munit:validation>
+	</munit:test>
+	
+
+
+</mule>
